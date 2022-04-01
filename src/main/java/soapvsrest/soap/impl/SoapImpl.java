@@ -3,7 +3,9 @@ package soapvsrest.soap.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import soapvsrest.GetExampleSoapRequest;
 import soapvsrest.GetExampleSoapResponse;
 
 /**
@@ -14,15 +16,16 @@ import soapvsrest.GetExampleSoapResponse;
 @Endpoint
 public class SoapImpl {
 
-  private static final String NAMESPACE_URI = "http://ws/soapvsrest";
+  private static final String NAMESPACE_URI = "http://soapvsrest";
 
   @Autowired
   public SoapImpl() {}
 
-  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getExampleSoap")
-  public @ResponsePayload GetExampleSoapResponse getExampleSoap() {
+  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getExampleSoapRequest")
+  public @ResponsePayload GetExampleSoapResponse getExampleSoap(
+      @RequestPayload GetExampleSoapRequest text) {
     GetExampleSoapResponse response = new GetExampleSoapResponse();
-    response.setExample("ssaaa");
+    response.setExample(text.getText());
 
     return response;
   }

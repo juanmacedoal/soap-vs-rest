@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.baeldung.com/springsoap/gen"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soapvsrest"
            targetNamespace="http://soapvsrest" elementFormDefault="qualified">
 
-    <xs:element name="getExampleSoap">
+    <xs:element name="getExampleSoapRequest">
         <xs:complexType>
             <xs:sequence>
+               <xs:element name="text" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
